@@ -1,0 +1,29 @@
+# Copyright text to be displayed at the very bottom of the footer
+copyright-text: Morello Project / Photo Credit - Thomas Q, Deleece Cook
+# Set this to false if you do not want the Linaro logo in the footer.
+linaro-branding: true
+# Social Media Icons Row
+social-media-icons: false
+# Display the contact details section
+display-contact-details: true
+# These links are displayed at the very bottom of the footer.
+company-links:
+    - name: Legal
+      url: https://www.linaro.org/legal/
+    - name: Contact
+      url: /contact/
+second-column:
+    title: "About"
+    latest-posts: false
+    # Optionally display another list of items
+    items:
+      - name: About
+        url: /about/
+      - name: FAQ
+        url: /faq/
+
+third-column:
+    title: "Get Involved"
+    items:
+      - name: Contact
+        url: /contact/

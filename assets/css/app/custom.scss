@@ -1,0 +1,28 @@
+#wrapper {
+    footer {
+        .footer-main {
+            background:$brand-primary !important;
+        }
+        .footer-bottom {
+            a {
+                color: #fff;
+                &:hover {
+                    color: $brand-primary;
+                }
+            }
+        }
+    }
+    #jumbotron {
+        &:before {
+            opacity: .7;
+            height: 100%;
+        }
+        &.background-image {
+            background-repeat: repeat !important;
+            background-size: auto !important;
+        }
+    }
+    h3.panel-title.text-center {
+        color: white;
+    }
+}
