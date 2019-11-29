@@ -1,0 +1,33 @@
+title: Morello Project
+description: >-
+  Morello is an industrial demonstrator of a capability architecture: a prototype System-on-Chip (SoC) and development board, developed by Arm, implementing a CHERI-extended ARMv8-A processor, GPU, peripherals, and memory subsystem, to ship in late 2021.
+url: "https://morello-project.org"
+theme: jumbo-jekyll-theme
+email: enquires@morello-project.org
+github_repo: https://github.com/MorelloProject/website/issues
+plugins:
+  - jekyll-data
+exclude:
+  - _site
+  - CODEOWNERS
+  - build-site.sh
+  - check-links.sh
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+permalink: /:categories/:title/
+address: ""
+blog_images_dir: assets/images/
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      comments: false
+      image: /assets/images/social-media-image.png
+  -
+    scope:
+      path: "_posts" # an empty string here means all files in the project
+    values:
+      layout: post
+include: ['_pages']
