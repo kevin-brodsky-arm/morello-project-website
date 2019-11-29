@@ -6,6 +6,4 @@ description: >
 layout: flow
 flow:
     - row: main_content_row
-jumbotron:
-    title: FAQ
 ---
