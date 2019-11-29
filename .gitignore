@@ -1,0 +1,8 @@
+_site
+.asset-cache
+.sass-cache
+.jekyll-metadata
+assets/resized
+production.morello-project.org
+staging.morello-project.org
+Gemfile.lock
