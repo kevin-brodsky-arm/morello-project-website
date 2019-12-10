@@ -31,3 +31,5 @@ defaults:
     values:
       layout: post
 include: ['_pages']
+google_analytics:
+  production: UA-16756069-34
