@@ -11,7 +11,7 @@ This static Jekyll site is using the [`jumbo-jekyll-theme`](https://github.com/l
 
 ## Contributing
 
-To make it easier to contribute to the content, Linaro provides a couple of Docker containers for building and checking the site. All you need is Docker installed on your computer and enough RAM and disc space.
+To make it easier to contribute to the content, [Linaro](https://www.linaro.org) provides a couple of Docker containers for building and checking the site. All you need is Docker installed on your computer and enough RAM and disk space.
 
 To build the site:
 
@@ -35,7 +35,7 @@ cd <built web site directory>
 ../check-links.sh
 ```
 
-The built web site directory will be `staging.trustedfirmware.org` unless you set `JEKYLLENV=production` before building the site, in which case the directory will be `production.trustedfirmware.org`.
+The built web site directory will be `staging.morello-project.org` unless you set `JEKYLLENV=production` before building the site, in which case the directory will be `production.morello-project.org`.
 
 For more information, please see the [build container wiki](https://github.com/linaro-its/jekyll-build-container/wiki) and the [link checker wiki](https://github.com/linaro-its/jekyll-link-checker/wiki).
 
