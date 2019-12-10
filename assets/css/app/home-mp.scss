@@ -1,10 +1,3 @@
-body{
-    background: url(/assets/images/content/cherry-lock.png) no-repeat center center;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-}
-
 div.vert-middle {
     margin: auto;
     width: 100%;
@@ -54,4 +47,9 @@ p.sub-title {
     color: black !important;
     padding: 10px;
     border-radius: 3px;
+}
+.row.home {
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: white !important;
 }
