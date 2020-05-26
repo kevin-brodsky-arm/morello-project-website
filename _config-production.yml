@@ -1,12 +1,13 @@
 # In order to build for staging run:
 # $ jekyll build --config _config.yml, _config-production.yml
 #
-#
 # URL of static site
 url: "https://morello-project.org"
 # Destination folder
 destination: production.morello-project.org
 # Production boolean used in layouts / includes
 production: true
-plugins:
-  - jekyll-sitemap
+# Google Analytics
+google_analytics:
+  enabled: true
+  code: UA-16756069-34
