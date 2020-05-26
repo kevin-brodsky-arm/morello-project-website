@@ -7,7 +7,7 @@ layout: flow
 jumbotron:
   slider:
     - darken: true
-      title: Morello Project
+      title: Under Construction
       description: >
         Morello is an industrial demonstrator of a capability architecture: a prototype System-on-Chip (SoC) and development board, developed by Arm, implementing a CHERI-extended ARMv8-A processor, GPU, peripherals, and memory subsystem, to ship in late 2021.
 flow:
@@ -49,11 +49,11 @@ flow:
     #                 url: /flow/
     #                 icon: fa fa-arrow-right
     #                 style: btn-primary
-  - row: container_row
-    style: youtube_embed_row bg-light
-    sections:
-        - format: youtube
-          style: #
-          url: https://www.youtube.com/watch?v=yRau0YEQKQk
-          title: LTD20-110 Enabling the Arm Morello Platform
+#   - row: container_row
+#     style: youtube_embed_row bg-light
+#     sections:
+#         - format: youtube
+#           style: #
+#           url: https://www.youtube.com/watch?v=yRau0YEQKQk
+#           title: LTD20-110 Enabling the Arm Morello Platform
 ---
