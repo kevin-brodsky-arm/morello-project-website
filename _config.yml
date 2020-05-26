@@ -102,6 +102,11 @@ post_placeholder: /assets/images/content/linaro-logo.png
 social_media_channels:
   github:
     url: https://github.com/MorelloProject
+  linkedin: false
+  facebook: false
+  youtube: false
+  twitter: false
+  instagram: false
 # Disqus Comments Setup
 disqus:
     enabled: true
