@@ -6,3 +6,5 @@ assets/resized
 production.morello-project.org
 staging.morello-project.org
 Gemfile.lock
+.jekyll-cache
+.asset_pipeline

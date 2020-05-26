@@ -1,35 +1,162 @@
 title: Morello Project
-description: >-
-  Morello is an industrial demonstrator of a capability architecture: a prototype System-on-Chip (SoC) and development board, developed by Arm, implementing a CHERI-extended ARMv8-A processor, GPU, peripherals, and memory subsystem, to ship in late 2021.
 url: "https://morello-project.org"
+baseurl: ""
+description: |-
+  Morello is an industrial demonstrator of a capability architecture: a prototype System-on-Chip (SoC) and development board, developed by Arm, implementing a CHERI-extended ARMv8-A processor, GPU, peripherals, and memory subsystem, to ship in late 2021.
+destination: _site
+permalink: /:categories/:title/
 theme: jumbo-jekyll-theme
-email: enquires@morello-project.org
-github_repo: https://github.com/MorelloProject/website/issues
-plugins:
-  - jekyll-data
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+encoding: utf-8
+safe: false
 exclude:
-  - _site
-  - CODEOWNERS
-  - build-site.sh
-  - check-links.sh
   - Gemfile
   - Gemfile.lock
+  - .asset_pipeline
+  - build-site.sh
+  - check-links.sh
+  - CODEOWNERS
   - README.md
-permalink: /:categories/:title/
-address: ""
-blog_images_dir: assets/images/
+  - .gitignore
+  - .git
+  - .asset-cache
+  - _static-site
+  - .sass-cache
+  - _site
+  - staging.morello-project.org
+  - production.morello-project.org
+sass:
+  style: compressed
+  load_paths:
+    - assets/css
+plugins:
+  - japr
+  - jekyll_picture_tag
+  - jekyll-tidy
+collections:
+  authors:
+    output: true
+    permalink: /author/:name/
+liquid:
+  error_mode: strict
 defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
+  - scope:
+      path: ""
     values:
-      comments: false
       image: /assets/images/social-media-image.png
-  -
-    scope:
-      path: "_posts" # an empty string here means all files in the project
+  - scope:
+      path: "_pages"
+    values:
+      layout: flow
+  - scope:
+      type: posts
+      path: "_posts"
     values:
       layout: post
-include: ['_pages']
+      is_post: true
+      comments: true
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: author
+      image: /assets/images/social-media-image.png
+include: ["_pages"]
+# ----------- THEME / WEBSITE CONFIG ---------------------
+# Blog images/thumbs dir
+blog_images_dir: assets/images/content/
+# Email
+email: enquires@morello-project.org
+# Company Address
+address:
+  - Harston Mill
+  - Royston Rd, Harston
+  - Cambridge, United Kingdom
+  - CB22 7GG
+# Support for http2 preload features
+http2_resources:
+  - rel: preload
+    as: font
+    type: font/woff2
+    href: /assets/fonts/lato/Lato-regular.woff2
 google_analytics:
-  production: UA-16756069-34
+  enabled: true
+  code: xxxxxxxx
+# Set the site-wide default social media share image.
+social_media_share_image: /assets/images/social-media-image.png
+# Set the default favicon
+favicon: /assets/images/favicon.png
+# Site Name - your brand name
+name: Jumbo Jekyll Theme
+# The blog filler element
+blog_filler_element: blog/blog_filler_element.html
+# Placeholder avatar
+avatar_placeholder: /assets/images/avatar-placeholder.jpg
+# Blog Post Image Placeholder
+post_placeholder: /assets/images/content/linaro-logo.png
+# Social Media Links
+social_media_channels:
+  github:
+    url: https://github.com/MorelloProject
+# Disqus Comments Setup
+disqus:
+    enabled: true
+    shortname: Morello
+# Edit on GitHub Settings
+edit-on-github:
+    enabled: true
+    repo: https://github.com/MorelloProject/website
+# Shema.org settings used in the schema.html include.
+schema:
+  "@type": "Corporation"
+  "name": "Morello Project"
+  "url": "https://morello-project.org"
+  "contactPoint":
+    "@type": "ContactPoint"
+    "telephone": "01223 400060"
+    "contactType": "customer service"
+    "availableLanguage": "en"
+  "sameAs":
+    - "https://facebook.com/LinaroOrg"
+    - "https://twitter.com/LinaroOrg"
+    - "https://instagram.com/LinaroOrg"
+    - "https://www.linkedin.com/company/1026961/"
+    - "https://youtube.com/LinaroOrg"
+    - "https://github.com/linaro"
+    - "https://www.linaro.org"
+# FESS search label
+search_label: MorelloProject
+# ----------- JEKYLL PLUGINS ---------------------
+# -------- jekyll-tidy --------
+jekyll_tidy:
+  # Toggle compression of HTML
+  compress_html: true
+  # JS Path added to exclude to stop errors.
+  exclude: ["assets/**/*.js", "robots.txt", "admin/config.yml"]
+# -------- jekyll_relative_links --------
+jekyll_relative_links:
+  process_all_collections: true
+  verbose: 1
+relative_links:
+  enabled: true
+  collections: false
+# -------- jekyll_relative_links --------
+readme_index:
+  enabled: true
+  remove_originals: false
+# -------- jekyll_picture_tag --------
+picture:
+  nomarkdown: false
+  source: "assets/images"
+  output: "assets/images"
+  relative_url: true
+# -------- japr --------
+asset_pipeline:
+  bundle: true
+  compress: true
+  output_path: assets/js
+  gzip: true
