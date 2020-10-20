@@ -109,12 +109,12 @@ social_media_channels:
   instagram: false
 # Disqus Comments Setup
 disqus:
-    enabled: true
-    shortname: Morello
+  enabled: true
+  shortname: Morello
 # Edit on GitHub Settings
 edit-on-github:
-    enabled: true
-    repo: https://github.com/MorelloProject/website
+  enabled: true
+  repo: https://github.com/MorelloProject/website
 # Shema.org settings used in the schema.html include.
 schema:
   "@type": "Corporation"
@@ -156,7 +156,7 @@ readme_index:
 # -------- jekyll_picture_tag --------
 picture:
   nomarkdown: false
-  source: "assets/images"
+  source: ""
   output: "assets/images"
   relative_url: true
 # -------- japr --------

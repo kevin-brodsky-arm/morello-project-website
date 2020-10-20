@@ -1,14 +1,10 @@
 search:
-    enabled: false
-    label: MorelloProject
-universal_nav: true
+  enabled: false
+  label: MorelloProject
+universal_nav: false
 brand:
-    text: Morello Project
-    url: /
+  text: Morello Project
+  url: /
 pages:
-    # - title: About
-    #   url: /about/
-    # - title: FAQ
-    #   url: /faq/
-    - title: Contact
-      url: /contact/
+  - title: Contact
+    url: /contact/
