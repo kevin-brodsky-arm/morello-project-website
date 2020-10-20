@@ -2,7 +2,7 @@
 # $ jekyll build --config _config.yml, _config-production.yml
 #
 # URL of static site
-url: "https://morello-project.org"
+url: "https://www.morello-project.org"
 # Destination folder
 destination: production.morello-project.org
 # Production boolean used in layouts / includes
