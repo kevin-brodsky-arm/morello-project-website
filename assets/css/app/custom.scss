@@ -1,15 +1,39 @@
 #wrapper {
+    .breadcrumb-container {
+        background-color: #f3f3f3;
+        h1, h2, h3 {
+            color: #3c3c3c;
+        }
+        ol.breadcrumb span {
+            color:black;
+        }
+    }
     footer {
+        a {
+            &:hover {
+                color: #eee;
+            }
+        }
         .footer-main {
-            background:$brand-primary !important;
+            background: $primary !important;
+             ul.list-group
+                {
+                    li:hover a {
+                        color: #eee;
+                    }
+
+                }
         }
         .footer-bottom {
             a {
                 color: #fff;
                 &:hover {
-                    color: $brand-primary;
+                    color: #eee;
                 }
             }
+        }
+        a.email {
+            font-weight: 900;
         }
     }
     #jumbotron {
@@ -25,4 +49,7 @@
     h3.panel-title.text-center {
         color: white;
     }
+}
+body {
+    background-color: #1c1c1c;
 }
