@@ -35,7 +35,7 @@ $(document).ready(function () {
       pagination: false,
       rewindSpeed: 500,
       rewind: true,
-      autoplay: true,
+      autoplay: false,
       items: 1,
       lazyLoadEager: 0,
       loop: false,
@@ -114,6 +114,76 @@ $(document).ready(function () {
     $(".double-scroll").doubleScroll({
       resetOnWindowResize: true,
       onlyIfScroll: true,
+    });
+  }
+  // Grab a sample of n size from arr
+  function getRandom(arr, n) {
+      var result = new Array(n),
+          len = arr.length,
+          taken = new Array(len);
+      if (n > len)
+          throw new RangeError("getRandom: more elements taken than available");
+      while (n--) {
+          var x = Math.floor(Math.random() * len);
+          result[n] = arr[x in taken ? taken[x] : x];
+          taken[x] = --len in taken ? taken[len] : len;
+      }
+      return result;
+  }
+
+  // Other Posts
+  if ($("#other-posts-section").length > 0) {
+    var other_posts_elements = "";
+    $.getJSON("/assets/json/posts.json", function(data){
+        var random_items = getRandom(data, 5);
+        for(let i=0;i<random_items.length; i++){
+          other_posts_elements += `<li class="media flex-column flex-sm-row">
+              <picture>
+                <source srcset="${random_items[i].image_webp}" type="image/webp">
+                <img class="mr-3 img-thumbnail suggested_post_thumb lazyload" 
+                src="${random_items[i].image}" alt="${random_items[i].title} featured image">
+              </picture>
+              <div class="media-body">
+                  <a href="${random_items[i].url}">
+                      <h5 class="mt-0 mb-1">${random_items[i].title}</h5>
+                      <em class="suggested_post_date">${new Date(random_items[i].date).toDateString()}</em>
+                      <p>
+                      ${random_items[i].description}
+                      </p>
+                  </a>
+              </div>
+          </li>`;
+        }
+        $("#other-posts-section").html(other_posts_elements);
+    }).fail(function(){
+        console.log("An error has occurred when fetching recent posts.");
+    });
+  }
+  // Latest Posts
+  if ($("#latest-posts-section").length > 0) {
+    var latest_posts_elements = "";
+    $.getJSON("/assets/json/recentPosts.json", function(data){
+        for(let i=0;i<data.length; i++){
+          latest_posts_elements += `<li class="media flex-column flex-sm-row">
+              <picture>
+                <source srcset="${data[i].image_webp}" type="image/webp">
+                <img class="mr-3 img-thumbnail suggested_post_thumb lazyload" 
+                src="${data[i].image}" alt="${data[i].title} featured image">
+              </picture>
+              <div class="media-body">
+                  <a href="${data[i].url}">
+                      <h5 class="mt-0 mb-1">${data[i].title}</h5>
+                      <em class="suggested_post_date">${new Date(data[i].date_published).toDateString()}</em>
+                      <p>
+                      ${data[i].summary}
+                      </p>
+                  </a>
+              </div>
+          </li>`;
+        }
+        $("#latest-posts-section").html(latest_posts_elements);
+    }).fail(function(){
+        console.log("An error has occurred when fetching recent posts.");
     });
   }
   // Theme navbar setup
@@ -283,6 +353,19 @@ $(document).ready(function () {
         );
         ga("create", ga_code, "auto");
         ga("send", "pageview");
+        // (function (w, d, s, l, i) {
+        //   w[l] = w[l] || [];
+        //   w[l].push({
+        //     "gtm.start": new Date().getTime(),
+        //     event: "gtm.js",
+        //   });
+        //   var f = d.getElementsByTagName(s)[0],
+        //     j = d.createElement(s),
+        //     dl = l != "dataLayer" ? "&l=" + l : "";
+        //   j.async = true;
+        //   j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        //   f.parentNode.insertBefore(j, f);
+        // })(window, document, "script", "dataLayer", ga_code);
         console.log("Google Analytics started");
       } else {
         console.log("Google analytics not started... :(");
@@ -324,37 +407,111 @@ $(document).ready(function () {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip();
   });
-
+  // Post Search Functionality using the FESS search API.
   if ($("#post_search").length > 0) {
-    var file_path = $("#post_search").data("file-path");
-
     $("#results-container").hide();
-    $("#search-input").keyup(function () {
+
+    function getSearchResults(
+      progress,
+      url,
+      searchLabel,
+      searchVal,
+      startPosition,
+      limit,
+      searchResults = []
+    ) {
+      return new Promise((resolve, reject) =>
+        fetch(url)
+          .then((response) => {
+            if (response.status !== 200) {
+              throw `${response.status}: ${response.statusText}`;
+            }
+            console.log(searchVal);
+            response
+              .json()
+              .then((data) => {
+                console.log(data);
+                searchResults = searchResults.concat(data.response.result);
+                if (data.response.next_page && searchResults.length < limit) {
+                  //   progress && progress(searchResults);
+                  startPosition += 10;
+                  var nextUrl = `https://search.linaro.org/json/?fields.label=${searchLabel}&q=${searchVal}&start=${startPosition}&sort=last_modified.desc`;
+                  getSearchResults(
+                    progress,
+                    nextUrl,
+                    searchLabel,
+                    searchVal,
+                    startPosition,
+                    limit,
+                    searchResults
+                  )
+                    .then(resolve)
+                    .catch(reject);
+                } else {
+                  var responseData = {
+                    results: searchResults.slice(0, limit),
+                    response: data.response,
+                  };
+                  resolve(responseData);
+                }
+              })
+              .catch(reject);
+          })
+          .catch(reject)
+      );
+    }
+    var timer;
+    $("#search-input").keyup(() => {
       if ($("#search-input").val().length == 0) {
         $("#results-container").fadeOut("fast");
         $(".close_search").hide();
       } else {
         $("#results-container").fadeIn("fast");
         $(".close_search").show();
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          var searchLabel = $("#post_search").data("search-label");
+          var searchQuery = $("#search-input").val();
+          var searchUrl = `https://search.linaro.org/json/?fields.label=${searchLabel}&q=${searchQuery}&start=0&sort=last_modified.desc`;
+          getSearchResults(
+            0,
+            searchUrl,
+            searchLabel,
+            $("#search-input").val(),
+            0,
+            10,
+            []
+          )
+            .then((responseData) => {
+              console.log(responseData);
+              console.log("Results:", responseData.results);
+              console.log("Response:", responseData.response);
+              var pageElements = [];
+              pageElements += `<li class="text-center">Found ${responseData.response.record_count} results</li>`;
+              for (var i = 0; i < responseData.results.length; i++) {
+                var formattedDate = new Date(
+                  responseData.results[i].last_modified
+                ).toDateString();
+                var contentDigest = responseData.results[i].digest.slice(
+                  0,
+                  200
+                );
+                pageElements += `
+                <li class="media flex-row"><div class="media-body"><a href="${responseData.results[i].url}"><h5 class="mt-0 mb-1"> ${responseData.results[i].title}</h5><p>${contentDigest}</p></a></div></li>`;
+              }
+              pageElements += `<li class="text-center"><a href="/search/?q=${searchQuery}">View all search results</a></li>`;
+              $("#results-container").html(pageElements);
+            })
+            .catch(console.error);
+        }, 1000);
       }
     });
+
     $(".close_search").click(function (e) {
       e.preventDefault();
       $("#search-input").val("");
       $("#results-container").fadeOut("fast");
       $(".close_search").hide();
-    });
-
-    console.log(file_path);
-    SimpleJekyllSearch({
-      searchInput: document.getElementById("search-input"),
-      resultsContainer: document.getElementById("results-container"),
-      searchResultTemplate:
-        '<li class="media flex-row"><picture><img class="lazyload mr-3 img-thumbnail suggested_post_thumb search_result_img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{image}"></picture><div class="media-body"><a href="{url}"><h5 class="mt-0 mb-1">{title}</h5><em class="suggested_post_date">{date}</em><p>{description}</p></a></div></li>',
-      json: file_path,
-      success: function (data) {
-        console.log(data);
-      },
     });
   }
 });
