@@ -14,8 +14,7 @@ jumbotron:
     image_alt: test image alt
     text: |-
       Morello is a research program led by Arm in association with partners and funded by the UKRI as
-      part of the UK government [Digital Security by Design (DSbD) programme](/) . It defines a new
-      prototype security architecture based on CHERI (Capability Hardware Enhanced RISC Instructions).
+      part of the UK government [Digital Security by Design (DSbD) programme](https://www.ukri.org/innovation/industrial-strategy-challenge-fund/digital-security-by-design/) . It defines a new prototype security architecture based on CHERI (Capability Hardware Enhanced RISC Instructions).
   second_section:
     image: /assets/images/content/iStock-1195413927.jpg
     image_alt: second test image alt
@@ -27,13 +26,15 @@ dev_section:
   first_column:
     icon: /assets/images/content/icon-2.png
     title: The Morello code repositories
+    url: https://git.morello-project.org/
     text: |-
-      Please refer to the top level [Documentation](/) repository to get started.
+      Please refer to the top level [Documentation](https://git.morello-project.org/morello/docs) repository to get started.
   second_column:
+    url: https://developer.arm.com/morello
     icon: /assets/images/content/icon-1.png
     title: Arm's Morello Developer pages
     text: |-
-      Arm's [Developer pages](/) provided curated resources for the Morello Program. Including 
+      Arm's [Developer pages](https://developer.arm.com/morello) provided curated resources for the Morello Program. Including 
       references to Architecture specifications, platform implementation details and documentation.
 flow:
   - row: container_row
@@ -54,7 +55,7 @@ flow:
 
             The Morello Platform Model is an open access FVP (Fixed Virtual Platform) implementation of the
             development platform, aligned with the future development board. Available to download from
-            Arm's [Ecosystem FVP Developer page](/).
+            Arm's [Ecosystem FVP Developer page](https://developer.arm.com/tools-and-software/open-source-software/arm-platforms-software/arm-ecosystem-fvps).
 
             FVPs use Arm technology to create a virtual model of the system hardware that can be run as an
             executable in a development environment. They use binary translation technology to deliver
@@ -86,14 +87,14 @@ flow:
             Includes a C/C++ compiler (clang), linker (lld), a standard C library (newlib), a standard C++
             library (libc++, libc++abi) and various utilities (such as assembler & disassembler).
 
-            [Arm Development Studio Morello Edition](/) is also available as a development environment for the
+            [Arm Development Studio Morello Edition](/coming-soon/) is also available as a development environment for the
             bare-metal configuration.
 
             ### AArch64 Linux LLVM/Clang toolchain
 
             This toolchain is an experimental AArch64 hosted variant, primarily intended to be used together
-            with Arm's [Morello Instruction Emulator](/). It includes a C/C++ compiler (clang), linker (lld), various
-            utilities and run-time libraries, but does not include a C library. See this [knowledge base article](/) for
+            with Arm's [Morello Instruction Emulator](/coming-soon/). It includes a C/C++ compiler (clang), linker (lld), various
+            utilities and run-time libraries, but does not include a C library. See this [knowledge base article](/coming-soon/) for
             more details.
       - format: text
         style: bg-white p-4 my-3
@@ -102,7 +103,7 @@ flow:
             ## Firmware
 
             The Development Platform is supported by Morello aware ports of standard open source firmware
-            components: [SCP firmware, Trusted Firmware TF-A, UEFI EDK2](/)
+            components: [SCP firmware](https://github.com/ARM-software/SCP-firmware), [Trusted Firmware TF-A](https://www.trustedfirmware.org/), [UEFI EDK2](https://github.com/tianocore/edk2)
       - format: text
         style: bg-white p-4 my-3
         text_content:
@@ -131,8 +132,7 @@ flow:
             examples ports of application frameworks. CheriBSD is maintained and hosted by the University
             of Cambridge.
 
-            [https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-software.html](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-software.html)
-            [https://github.com/CTSRD-CHERI/cheribsd](https://github.com/CTSRD-CHERI/cheribsd)
+            - [https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-software.html](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-software.html)
+            - [https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-morello-software.html](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-morello-software.html)
+            - [https://github.com/CTSRD-CHERI/cheribsd](https://github.com/CTSRD-CHERI/cheribsd)
 ---
-
-Coming soon...
