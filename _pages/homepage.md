@@ -26,7 +26,7 @@ dev_section:
   first_column:
     icon: /assets/images/content/icon-2.png
     title: The Morello code repositories
-    url: https://git.morello-project.org/
+    url: https://git.morello-project.org/explore/projects
     text: |-
       Please refer to the top level [Documentation](https://git.morello-project.org/morello/docs) repository to get started.
   second_column:
