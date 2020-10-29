@@ -88,14 +88,14 @@ flow:
             Includes a C/C++ compiler (clang), linker (lld), a standard C library (newlib), a standard C++
             library (libc++, libc++abi) and various utilities (such as assembler & disassembler).
 
-            [Arm Development Studio Morello Edition](/coming-soon/) is also available as a development environment for the
+            [Arm Development Studio Morello Edition](https://developer.arm.com/architectures/cpu-architecture/a-profile/morello/development-tools#arm-development-studio) is also available as a development environment for the
             bare-metal configuration.
 
             ### AArch64 Linux CHERI LLVM/Clang toolchain
 
             This toolchain is an experimental AArch64 hosted variant, primarily intended to be used together
-            with Arm's [Morello Instruction Emulator](/coming-soon/). It includes a C/C++ compiler (clang), linker (lld), various
-            utilities and run-time libraries, but does not include a C library. See this [knowledge base article](/coming-soon/) for
+            with Arm's [Morello Instruction Emulator](https://developer.arm.com/architectures/cpu-architecture/a-profile/morello/development-tools#instruction-emulator). It includes a C/C++ compiler (clang), linker (lld), various
+            utilities and run-time libraries, but does not include a C library. See this [knowledge base article](https://developer.arm.com/documentation/ka002048/1-0/?lang=en) for
             more details.
       - format: text
         style: bg-white p-4 my-3
