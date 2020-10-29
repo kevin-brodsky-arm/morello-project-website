@@ -72,13 +72,12 @@ flow:
         style: bg-white p-4 my-3
         text_content:
           text: |-
-            ## CHERI LLVM Compiler with Morello Support
+            ## LLVM Compiler with Morello Support
 
-            Morello is supported by LLVM-based open-source toolchains based on the CHERI Clang/LLVM toolchain
-            from the University of Cambridge. Please note, these are experimental
+            Morello is supported by LLVM-based open-source toolchains. Please note, these are experimental
             toolchains and as such features may be missing.
 
-            ### Android CHERI LLVM/Clang toolchain
+            ### Android LLVM/Clang toolchain
 
             Includes a C/C++ compiler (clang), linker (lld), debugger (lldb), various utilities (such as
             assembler & disassembler) and run-time libraries.
@@ -91,7 +90,7 @@ flow:
             [Arm Development Studio Morello Edition](/coming-soon/) is also available as a development environment for the
             bare-metal configuration.
 
-            ### AArch64 Linux CHERI LLVM/Clang toolchain
+            ### AArch64 Linux LLVM/Clang toolchain
 
             This toolchain is an experimental AArch64 hosted variant, primarily intended to be used together
             with Arm's [Morello Instruction Emulator](/coming-soon/). It includes a C/C++ compiler (clang), linker (lld), various
@@ -128,14 +127,12 @@ flow:
           text: |-
             ## CheriBSD
 
-            The University of Cambridge Computing Laboratory implementation of CheriBSD has also been
-            ported to the Morello Platform. This provides a BSD implementation of a memory-safe kernel
-            and userspace, as well as examples ports of application frameworks, demonstrating a more complete integration of CHERI
-            (and Morello) support into an OS design. CheriBSD is maintained and hosted by the University
+            The University of Cambridge Computer Laboratory implementation of CheriBSD has also been
+            ported to the Morello Platform. This provides a BSD implementation of a memory safe kernel and
+            examples ports of application frameworks. CheriBSD is maintained and hosted by the University
             of Cambridge.
 
             - [https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-software.html](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-software.html)
             - [https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-morello-software.html](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-morello-software.html)
-            - [https://morello-dist.cl.cam.ac.uk](https://morello-dist.cl.cam.ac.uk)
             - [https://github.com/CTSRD-CHERI/cheribsd](https://github.com/CTSRD-CHERI/cheribsd)
 ---
