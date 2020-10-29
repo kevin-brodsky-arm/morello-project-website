@@ -10,4 +10,4 @@ production: true
 # Google Analytics
 google_analytics:
   enabled: true
-  code: xxxxxx
+  code: UA-16756069-34
