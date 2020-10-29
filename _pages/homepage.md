@@ -127,7 +127,7 @@ flow:
           text: |-
             ## CheriBSD
 
-            The University of Cambridge Computing Laboratory implementation of CheriBSD has also been
+            The University of Cambridge Computer Laboratory implementation of CheriBSD has also been
             ported to the Morello Platform. This provides a BSD implementation of a memory safe kernel and
             examples ports of application frameworks. CheriBSD is maintained and hosted by the University
             of Cambridge.
