@@ -34,8 +34,8 @@ dev_section:
     icon: /assets/images/content/icon-1.png
     title: Arm's Morello Developer pages
     text: |-
-      Arm's [Developer pages](https://developer.arm.com/morello) provided curated resources for the Morello Program. Including 
-      references to Architecture specifications, platform implementation details and documentation.
+      Arm's [Developer pages](https://developer.arm.com/morello) provide curated resources for the Morello Program. Including Architecture specifications, platform model, 
+      technical reference manual, Morello forum and more.
 flow:
   - row: container_row
     style: bg-primary
@@ -65,7 +65,7 @@ flow:
 
             ### Morello Hardware Development Platform
 
-            The Morello hardware development platform will become available early in 2022 and will be
+            The Morello hardware development platform will become available early in Q1 2022 and will be
             supported by the same software stack. Note: Availability of hardware will be limited - platforms
             will be restricted to partners involved in defined research activities.
       - format: text
