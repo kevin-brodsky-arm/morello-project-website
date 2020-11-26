@@ -63,6 +63,8 @@ flow:
             implement a programmer's view suitable for software development and enable execution of full
             software stacks, providing a widely available platform ahead of silicon.
 
+            A walkthrough video of setting up the development environment is now available - [/resources/morello-platform-model-and-android-stack-walkthrough/](/resources/morello-platform-model-and-android-stack-walkthrough/).
+
             ### Morello Hardware Development Platform
 
             The Morello hardware development platform will become available early in Q1 2022 and will be
@@ -139,5 +141,5 @@ flow:
             - [https://morello-dist.cl.cam.ac.uk](https://morello-dist.cl.cam.ac.uk)
             - [https://github.com/CTSRD-CHERI/cheribsd](https://github.com/CTSRD-CHERI/cheribsd)
 
-            A walkthrough video of setting up the development environment is now available - [/resources/morello-platform-model-and-android-stack-walkthrough/](/resources/morello-platform-model-and-android-stack-walkthrough/).
+           
 ---
