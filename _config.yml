@@ -58,7 +58,7 @@ defaults:
     values:
       layout: post
       is_post: true
-      comments: true
+      comments: false
   - scope:
       path: ""
       type: "authors"
