@@ -6,5 +6,7 @@ brand:
   text: Morello Project
   url: /
 pages:
+  - title: Resources
+    url: /resources/
   - title: Contact
     url: /contact/
