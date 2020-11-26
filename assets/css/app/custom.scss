@@ -77,6 +77,12 @@
     }
   }
 }
-body {
-  background-color: $primary;
+
+#wrapper {
+  .navbar .nav-item a.nav-link:before {
+    background: #ffa409;
+  }
+  img.img-fluid.post_index_header_image {
+    max-height: 500px;
+  }
 }

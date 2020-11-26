@@ -138,4 +138,6 @@ flow:
             - [https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-morello-software.html](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-morello-software.html)
             - [https://morello-dist.cl.cam.ac.uk](https://morello-dist.cl.cam.ac.uk)
             - [https://github.com/CTSRD-CHERI/cheribsd](https://github.com/CTSRD-CHERI/cheribsd)
+
+            A walkthrough video of setting up the development environment is now available - [/resources/morello-platform-model-and-android-stack-walkthrough/](/resources/morello-platform-model-and-android-stack-walkthrough/).
 ---
