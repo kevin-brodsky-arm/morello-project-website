@@ -1,3 +1,22 @@
+function slugify(string) {
+  const a =
+    "àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;";
+  const b =
+    "aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------";
+  const p = new RegExp(a.split("").join("|"), "g");
+
+  return string
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(p, (c) => b.charAt(a.indexOf(c))) // Replace special characters
+    .replace(/&/g, "-and-") // Replace & with 'and'
+    .replace(/[^\w\-]+/g, "") // Remove all non-word characters
+    .replace(/\-\-+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+}
+
 $(document).ready(function () {
   // Clipboard JS
   if ($("div.highlight").length > 0) {
@@ -26,6 +45,39 @@ $(document).ready(function () {
       });
     });
   }
+  // Tagged Posts
+  if ($("#tagged_posts").length > 0) {
+    var getUrlParameter = (sParam) => {
+      var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split("&"),
+        sParameterName,
+        i;
+
+      for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split("=");
+
+        if (sParameterName[0] === sParam) {
+          return sParameterName[1] === undefined
+            ? true
+            : decodeURIComponent(sParameterName[1]);
+        }
+      }
+    };
+    var tag = getUrlParameter("tag");
+    if (tag !== undefined) {
+      console.log(tag);
+      $(".tag_list").addClass("d-none");
+      $(`.tag_list.${slugify(tag)}`).addClass("d-block");
+      $(`#tag_cloud`).addClass("d-none");
+      $(`#view_all_tags_btn`).addClass("d-inline-block");
+      $(this).html(tag);
+      $("#view_all_tags_btn").on("click", function () {
+        window.location.replace(window.location.pathname);
+      });
+    } else {
+      $(`#tag_cloud`).removeClass("d-none");
+    }
+  }
   if ($("#jumbotron-slider").length > 0) {
     $("#jumbotron-slider").owlCarousel({
       navigation: true,
@@ -35,7 +87,7 @@ $(document).ready(function () {
       pagination: false,
       rewindSpeed: 500,
       rewind: true,
-      autoplay: false,
+      autoplay: true,
       items: 1,
       lazyLoadEager: 0,
       loop: false,
@@ -116,76 +168,6 @@ $(document).ready(function () {
       onlyIfScroll: true,
     });
   }
-  // Grab a sample of n size from arr
-  function getRandom(arr, n) {
-      var result = new Array(n),
-          len = arr.length,
-          taken = new Array(len);
-      if (n > len)
-          throw new RangeError("getRandom: more elements taken than available");
-      while (n--) {
-          var x = Math.floor(Math.random() * len);
-          result[n] = arr[x in taken ? taken[x] : x];
-          taken[x] = --len in taken ? taken[len] : len;
-      }
-      return result;
-  }
-
-  // Other Posts
-  if ($("#other-posts-section").length > 0) {
-    var other_posts_elements = "";
-    $.getJSON("/assets/json/posts.json", function(data){
-        var random_items = getRandom(data, 5);
-        for(let i=0;i<random_items.length; i++){
-          other_posts_elements += `<li class="media flex-column flex-sm-row">
-              <picture>
-                <source srcset="${random_items[i].image_webp}" type="image/webp">
-                <img class="mr-3 img-thumbnail suggested_post_thumb lazyload" 
-                src="${random_items[i].image}" alt="${random_items[i].title} featured image">
-              </picture>
-              <div class="media-body">
-                  <a href="${random_items[i].url}">
-                      <h5 class="mt-0 mb-1">${random_items[i].title}</h5>
-                      <em class="suggested_post_date">${new Date(random_items[i].date).toDateString()}</em>
-                      <p>
-                      ${random_items[i].description}
-                      </p>
-                  </a>
-              </div>
-          </li>`;
-        }
-        $("#other-posts-section").html(other_posts_elements);
-    }).fail(function(){
-        console.log("An error has occurred when fetching recent posts.");
-    });
-  }
-  // Latest Posts
-  if ($("#latest-posts-section").length > 0) {
-    var latest_posts_elements = "";
-    $.getJSON("/assets/json/recentPosts.json", function(data){
-        for(let i=0;i<data.length; i++){
-          latest_posts_elements += `<li class="media flex-column flex-sm-row">
-              <picture>
-                <source srcset="${data[i].image_webp}" type="image/webp">
-                <img class="mr-3 img-thumbnail suggested_post_thumb lazyload" 
-                src="${data[i].image}" alt="${data[i].title} featured image">
-              </picture>
-              <div class="media-body">
-                  <a href="${data[i].url}">
-                      <h5 class="mt-0 mb-1">${data[i].title}</h5>
-                      <em class="suggested_post_date">${new Date(data[i].date_published).toDateString()}</em>
-                      <p>
-                      ${data[i].summary}
-                      </p>
-                  </a>
-              </div>
-          </li>`;
-        }
-        $("#latest-posts-section").html(latest_posts_elements);
-    }).fail(function(){
-        console.log("An error has occurred when fetching recent posts.");
-    });
-  }
   // Theme navbar setup
   var wrapper = $("#wrapper");
   var universalNav = false;
@@ -222,13 +204,30 @@ $(document).ready(function () {
   $(window).scroll(function () {
     navbar();
   });
-
-  //   Multi-level dropdowns
-  $(".navbar .dropdown-menu > li:not(.dropdown-item)").on("click", function (
-    e
-  ) {
-    e.stopPropagation();
-  });
+  // Sticky tab bar setup
+  if ($("#tabbed-nav-bar").length > 0) {
+    var text = $("#tabbed-nav-bar ul li a.active").text();
+    $("#sub-navigation-header").text(text);
+    var stickyTabBarOffset = $("#tabbed-nav-bar").offset().top;
+    const stickyNav = () => {
+      var scroll = $(window).scrollTop();
+      if (scroll > stickyTabBarOffset) {
+        $("#tabbed-nav-bar").addClass("fixed-top");
+      } else {
+        $("#tabbed-nav-bar").removeClass("fixed-top");
+      }
+    };
+    $(window).scroll(function () {
+      stickyNav();
+    });
+  }
+  // Multi-level dropdowns
+  $(".navbar .dropdown-menu > li:not(.dropdown-item)").on(
+    "click",
+    function (e) {
+      e.stopPropagation();
+    }
+  );
   $(".navbar .dropdown-item").on("click", function (e) {
     var $el = $(this).children(".dropdown-toggle");
     var $parent = $el.offsetParent(".dropdown-menu");
@@ -307,16 +306,19 @@ $(document).ready(function () {
 
     // Options for the Cookie Dialog
     var options = {
-      title: "Cookies & Privacy Policy",
+      title: cookies_popup_title,
+      link: privacy_url,
+      moreInfoLabel: "View our Privacy Policy",
+      cookieLink: "/cookies/",
+      cookieLabel: "Manage your cookies",
       links: [
         { url: "/cookies/", text: "Cookies Policy" },
-        { url: "/legal#privacy-policy2", text: "Privacy Policy" },
+        { url: "/privacy", text: "Privacy Policy" },
       ],
       delay: 1000,
       acceptBtnLabel: "Accept All Cookies",
       analyticsChecked: true,
-      message:
-        "Enabling cookies allows you to use our website to its full extent and to personalize your experience on our sites. They tell us which parts of our websites people have visited, help us measure the effectiveness of ads and web searches and give us insights into user behavior so we can improve our communications with you.",
+      message: cookies_popup_description,
       cookieTypes: [
         {
           type: "Analytics",
@@ -332,40 +334,37 @@ $(document).ready(function () {
     // Enabled Google Analytics if cookie to allow us to collect is set.
     function init_ga() {
       if ($.fn.ihavecookies.preference("analytics")) {
-        (function (i, s, o, g, r, a, m) {
-          i["GoogleAnalyticsObject"] = r;
-          (i[r] =
-            i[r] ||
-            function () {
-              (i[r].q = i[r].q || []).push(arguments);
-            }),
-            (i[r].l = 1 * new Date());
-          (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-          a.async = 1;
-          a.src = g;
-          m.parentNode.insertBefore(a, m);
-        })(
-          window,
-          document,
-          "script",
-          "https://www.google-analytics.com/analytics.js",
-          "ga"
-        );
-        ga("create", ga_code, "auto");
-        ga("send", "pageview");
-        // (function (w, d, s, l, i) {
-        //   w[l] = w[l] || [];
-        //   w[l].push({
-        //     "gtm.start": new Date().getTime(),
-        //     event: "gtm.js",
-        //   });
-        //   var f = d.getElementsByTagName(s)[0],
-        //     j = d.createElement(s),
-        //     dl = l != "dataLayer" ? "&l=" + l : "";
-        //   j.async = true;
-        //   j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        //   f.parentNode.insertBefore(j, f);
-        // })(window, document, "script", "dataLayer", ga_code);
+        // (function (i, s, o, g, r, a, m) {
+        //   i["GoogleAnalyticsObject"] = r;
+        //   (i[r] =
+        //     i[r] ||
+        //     function () {
+        //       (i[r].q = i[r].q || []).push(arguments);
+        //     }),
+        //     (i[r].l = 1 * new Date());
+        //   (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        //   a.async = 1;
+        //   a.src = g;
+        //   m.parentNode.insertBefore(a, m);
+        // })(
+        //   window,
+        //   document,
+        //   "script",
+        //   "https://www.google-analytics.com/analytics.js",
+        //   "ga"
+        // );
+        // ga("create", ga_code, "auto");
+        // ga("send", "pageview");
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", ga_code);
         console.log("Google Analytics started");
       } else {
         console.log("Google analytics not started... :(");
@@ -407,6 +406,40 @@ $(document).ready(function () {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip();
   });
+
+  // SimpleJekyllSearch
+  // if ($("#post_search").length > 0) {
+  //   var file_path = $("#post_search").data("file-path");
+
+  //   $("#results-container").hide();
+  //   $("#search-input").keyup(function () {
+  //     if ($("#search-input").val().length == 0) {
+  //       $("#results-container").fadeOut("fast");
+  //       $(".close_search").hide();
+  //     } else {
+  //       $("#results-container").fadeIn("fast");
+  //       $(".close_search").show();
+  //     }
+  //   });
+  //   $(".close_search").click(function (e) {
+  //     e.preventDefault();
+  //     $("#search-input").val("");
+  //     $("#results-container").fadeOut("fast");
+  //     $(".close_search").hide();
+  //   });
+
+  //   console.log(file_path);
+  //   SimpleJekyllSearch({
+  //     searchInput: document.getElementById("search-input"),
+  //     resultsContainer: document.getElementById("results-container"),
+  //     searchResultTemplate:
+  //       '<li class="media flex-row"><picture><img class="lazyload mr-3 img-thumbnail suggested_post_thumb search_result_img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{image}"></picture><div class="media-body"><a href="{url}"><h5 class="mt-0 mb-1">{title}</h5><em class="suggested_post_date">{date}</em><p>{description}</p></a></div></li>',
+  //     json: file_path,
+  //     success: function (data) {
+  //       console.log(data);
+  //     },
+  //   });
+  // }
   // Post Search Functionality using the FESS search API.
   if ($("#post_search").length > 0) {
     $("#results-container").hide();
@@ -497,7 +530,7 @@ $(document).ready(function () {
                   200
                 );
                 pageElements += `
-                <li class="media flex-row"><div class="media-body"><a href="${responseData.results[i].url}"><h5 class="mt-0 mb-1"> ${responseData.results[i].title}</h5><p>${contentDigest}</p></a></div></li>`;
+                  <li class="media flex-row"><div class="media-body"><a href="${responseData.results[i].url}"><h5 class="mt-0 mb-1"> ${responseData.results[i].title}</h5><p>${contentDigest}</p></a></div></li>`;
               }
               pageElements += `<li class="text-center"><a href="/search/?q=${searchQuery}">View all search results</a></li>`;
               $("#results-container").html(pageElements);

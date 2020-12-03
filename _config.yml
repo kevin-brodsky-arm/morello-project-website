@@ -5,7 +5,7 @@ description: |-
   Under construction.
 destination: _site
 permalink: /:categories/:title/
-theme: jumbo-jekyll-theme
+theme: linaro-jekyll-theme
 highlighter: rouge
 markdown: kramdown
 kramdown:
@@ -77,6 +77,13 @@ address:
   - Royston Rd, Harston
   - Cambridge, United Kingdom
   - CB22 7GG
+# Toggle the animated navbar dropdown feature
+# Navbar dropdowns will open on hover
+hover_nav_dropdowns: true
+# Set the class used to animate dropdowns e.g. fade-up / fade-down
+nav_dropdowns_animation_class: fade-down
+# The bootstrap breakpoint at which
+nav_expand_breakpoint: lg
 # Support for http2 preload features
 http2_resources:
   - rel: preload
@@ -92,7 +99,7 @@ social_media_share_image: /assets/images/social-media-image.png
 # Set the default favicon
 favicon: /assets/images/favicon.png
 # Site Name - your brand name
-name: Jumbo Jekyll Theme
+name: Morello Project
 # The blog filler element
 blog_filler_element: blog/blog_filler_element.html
 # Placeholder avatar

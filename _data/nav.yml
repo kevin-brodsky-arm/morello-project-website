@@ -3,8 +3,9 @@ search:
   label: MorelloProject
 universal_nav: false
 brand:
-  text: Morello Project
-  url: /
+  # custom_include: nav/brand.html
+  path: /assets/images/content/ARM1692_Morello_Wordmark_logoST4_White_V1.svg
+  alt: Linaro logo
 pages:
   - title: Resources
     url: /resources/
