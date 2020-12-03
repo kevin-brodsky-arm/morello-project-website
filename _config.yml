@@ -5,7 +5,7 @@ description: |-
   Under construction.
 destination: _site
 permalink: /:categories/:title/
-theme: jumbo-jekyll-theme
+theme: linaro-jekyll-theme
 highlighter: rouge
 markdown: kramdown
 kramdown:
@@ -92,7 +92,7 @@ social_media_share_image: /assets/images/social-media-image.png
 # Set the default favicon
 favicon: /assets/images/favicon.png
 # Site Name - your brand name
-name: Jumbo Jekyll Theme
+name: Morello Project
 # The blog filler element
 blog_filler_element: blog/blog_filler_element.html
 # Placeholder avatar
