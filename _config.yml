@@ -77,6 +77,13 @@ address:
   - Royston Rd, Harston
   - Cambridge, United Kingdom
   - CB22 7GG
+# Toggle the animated navbar dropdown feature
+# Navbar dropdowns will open on hover
+hover_nav_dropdowns: true
+# Set the class used to animate dropdowns e.g. fade-up / fade-down
+nav_dropdowns_animation_class: fade-down
+# The bootstrap breakpoint at which
+nav_expand_breakpoint: lg
 # Support for http2 preload features
 http2_resources:
   - rel: preload
