@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-gem "jumbo-jekyll-theme", "6.0.2.1"
+gem "linaro-jekyll-theme", "4.2.0"
 group :jekyll_plugins do
   gem "nokogiri"
   gem "closure-compiler"
