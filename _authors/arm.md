@@ -2,11 +2,10 @@
 name: Arm
 username: arm
 image: /assets/images/content/arm-logo.jpg
-twitter: https://twitter.com/LinaroOrg
-github: https://github.com/Linaro
-linkedin: https://www.linkedin.com/company/1026961/
-youtube: https://youtube.com/LinaroOrg
+twitter: https://twitter.com/Arm
+linkedin: https://www.linkedin.com/company/Arm
+youtube: https://youtube.com/user/Armflix
 ---
-Linaro was founded in 2010 and since its inception it has driven open source software development on Arm. Linaro provides the tools, Linux kernel quality and security needed for a solid foundation to innovate on. At the time, multiple companies were frequently trying to upstream the same code, causing fragmentation and delay to product deployments. Linaro was therefore formed to consolidate the Arm code base and provide a much-needed collaborative forum for companies to work together on foundational open source software on Arm. Today these same principles of collaboration still apply, except we now work across a breadth of Engineering specialisms within many different verticals. Our membership base is diverse and includes some of the most prominent names within the industry. However, our principles of eliminating duplication of effort, reducing fragmentation and aiding speed to market remain at the core of our business.
+Arm defines the pervasive computing that's shaping today’s connected world. Realized in 180 billion silicon chips, our device architectures orchestrate the performance of the technology that's transforming our lives — from smartphones to supercomputers, from medical instruments to agricultural sensors, and from base stations to servers.
 
-Visit the [Linaro website](https://www.linaro.org/) for more information.
+Visit the [Arm website](https://www.arm.com/) for more information.
