@@ -1,4 +1,8 @@
 #wrapper {
+  .rounded-circle {
+    object-fit: contain !important;
+    background-color: white;
+  }
   .blog-content {
     h2,
     h3,
