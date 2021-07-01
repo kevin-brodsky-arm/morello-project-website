@@ -58,4 +58,5 @@
     {% endif %}
     {% include_cached components/schema.html %}
     {% if page.schema %}<script type="application/ld+json">{{page.schema | jsonify }}</script>{% endif %}
+    {% if page.extra.head %}{{page.extra.head}}{% endif %}
 </head>
