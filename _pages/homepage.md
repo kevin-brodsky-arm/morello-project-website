@@ -86,7 +86,7 @@ flow:
 
             Bare-metal development is supported by exit from the firmware stack at two points:
             * Post SCP execution: System level IP is initialised, development is possible from Application processor reset. Supports true bare-metal scenarios.
-            * Post TF-A execution: Lead Application processor is initialised and runtime services are available. Supports ports of new RTOS environments and more complex bare-metal workloads
+            * Post TF-A execution: Lead Application processor is initialised and runtime services are available. Supports ports of new RTOS environments and more complex bare-metal workloads.
 
             Please refer to `standalone-baremetal-readme.rst` in the Documentation repository.
 
@@ -124,7 +124,7 @@ flow:
 
             ## CheriBSD
 
-            A mature [CheriBSD](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-morello-software.html) environment for Morello is implemented and hosted separately by the University of Cambridge Computer Laboratory. This provides a memory-safe kernel and userspace, as well as examples ports of application frameworks, demonstrating more complete integration of CHERI (and Morello) support into an OS design.
+            A mature [CheriBSD](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-morello-software.html) environment for Morello is implemented and hosted separately by the University of Cambridge Computer Laboratory. This provides a memory-safe kernel and userspace, as well as example ports of application frameworks, demonstrating more complete integration of CHERI (and Morello) support into an OS design.
 
       - format: text
         style: bg-white p-4 my-3
@@ -137,7 +137,7 @@ flow:
 
             ### Morello Linux kernel (under development)
 
-            Arm’s work on the Linux Kernel is focused on developing a new kernel-user ABI to support pure capability userspace software development. The aim is to replace all pointers at the Kernel-user interface with capabilities, instead of 64-bit integers. This work is linked to development of associated C libraries (Bionic, Musl, GlibC) and developed against a PCuABI (pure capability kernel-user ABI) specification. Enabling Android and Linux environments capable of supporting a mix of pure capability and “COMPAT” standard 64-bit userspace components. (32-bit applications will not be supported)
+            Arm’s work on the Linux Kernel is focused on developing a new kernel-user ABI to support pure capability userspace software development. The aim is to replace all pointers at the kernel-user interface with capabilities, instead of 64-bit integers. This work is linked to development of associated C libraries (Bionic, Musl, GlibC) and developed against a PCuABI (pure capability kernel-user ABI) specification. Enabling Android and Linux environments capable of supporting a mix of pure capability and “COMPAT” standard 64-bit userspace components. (32-bit applications will not be supported)
 
             Initial Linux Kernel implementations (releases throughout 2021) rely on a lightly modified ACK (Android Common Kernel), supported by a temporary libshim translation layer in C libraries.
 
