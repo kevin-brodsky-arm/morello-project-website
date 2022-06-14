@@ -117,7 +117,7 @@ flow:
 
             ## CheriBSD
 
-            A mature [CheriBSD](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-morello-software.html) environment for Morello is implemented and hosted separately by the University of Cambridge Computer Laboratory. This provides a memory-safe kernel and userspace, as well as example ports of application frameworks, demonstrating more complete integration of CHERI (and Morello) support into an OS design.
+            A mature [CheriBSD](https://www.cheribsd.org) environment for Morello is implemented and hosted separately by the University of Cambridge Computer Laboratory. This provides a memory-safe kernel and userspace, as well as example ports of application frameworks, demonstrating more complete integration of CHERI (and Morello) support into an OS design.
 
       - format: text
         style: bg-white p-4 my-3
