@@ -49,6 +49,13 @@ flow:
         text_content:
           text: |-
             ## Development Platforms
+            ### Morello Hardware Development Platform
+
+            The Morello hardware development platform is now available to organizations involved in defined research activities. Access to the platform is managed by the UK government's Digital Security by Design (DSbD) [Technology Access Programme](https://www.dsbd.tech/technology-access-programme/).
+
+            ![](/assets/images/content/DSCF0211-Edit.jpg){: width="400" }
+
+            Software support for the platform will evolve over time and specifics will be detailed via `release-notes.rst` in the Documentation code repository. Note that firmware pre-installed on boards should be updated to the latest versions immediately after first validation of boot.
 
             ### Morello Platform Model
 
@@ -56,15 +63,7 @@ flow:
 
             FVPs use Arm binary translation technology to create a register level functional model of system hardware (including processor, memory and peripherals) that can be run as an executable in a development environment. They implement a programmer’s view model suitable for software development, enabling execution of full software stacks on a widely available platform.
 
-            A walkthrough video of setting up the development environment is available - [/resources/morello-platform-model-and-android-stack-walkthrough/](/resources/morello-platform-model-and-android-stack-walkthrough/).
-
-            ### Morello Hardware Development Platform
-
-            The Morello hardware development platform (available Q1 2022 onwards) is supported by the same range of software stacks as the existing Platform model. Availability of hardware will be limited - platforms will be restricted to partners involved in defined research activities.
-
-            ![](/assets/images/content/DSCF0211-Edit.jpg){: width="400" }
-
-            Support will evolve over time and specifics will be detailed via `release-notes.rst` in the Documentation code repository. Note that firmware pre-installed on boards should be updated to the latest versions immediately after first validation of boot.
+            A walkthrough video of setting up the Android development environment on FVP is available on the [resources pages](/resources/morello-platform-model-and-android-stack-walkthrough/)
       - format: text
         style: bg-white p-4 my-3
         text_content:
@@ -93,31 +92,30 @@ flow:
 
             An evolving Android environment has been available for Morello since the first release in October 2020. 
 
-            This includes a minimal (nano) headless system Android (64-bit) profile suitable for use with the FVP. Full Android boot is supported on the Morello hardware platform
+            This includes a minimal (nano) headless system Android (64-bit) profile suitable for use with the FVP. Full Android boot is supported on the Morello hardware platform.
 
-            Support for pure capability (purecap) applications (along with several example ports) is provided by a Morello ACK (Android Common Kernel) and Bionic library variants built using the CHERI LLVM/Clang toolchain.
+            Support for pure capability (purecap) applications (along with several example ports) is provided by a Morello Android Kernel and Bionic library variants built using the CHERI LLVM/Clang toolchain.
 
             For more information on the status of the Android environment, please refer to `android-readme.rst` in the Documentation repository.
 
             Further information on the timeline for ongoing work in the Morello Kernel and the use of libshim in C libraries is available below.
 
             ## Linux Enablement (2022 onwards)
-
             Support for a Morello Linux environment is still under development. 
 
-            An initial prototype Linux development environment is available to support the Morello board. This is built using the existing Morello LLVM toolchain and includes a purecap musl libC port and applications integrated into a standard (64-bit) rootfs. A second software release in the first half of 2022 will provide a more complete rootfs and transitional PCuABI implementation: Introducing a Morello Kernel into a standard (64-bit) Debian distribution. An expanding purecap userspace world can then gradually be built up inside a chroot. Both Linux environments will allow native (Arm on Arm) development on the Morello board.
-            
-            ### Examples of planned work packages, 2022 onwards:          
+            A prototype native (Arm on Arm) Linux development environment for the Morello board is expected Q3 2022. This will provide a (64-bit) Debian distribution with a modified kernel (implementing the transitional PCuABI) and a proof of concept minimal purecap userspace (based initially on musl libC) inside a chroot.
+                                  
+            ### Examples of planned work packages, 2022/23 onwards:          
             * Further evolution of musl libC support & purecap userspace application ports
             * Staged introduction of Morello Kernel PCuABI features
             * Introduction of a Morello GCC/GlibC based environment
             * Proof of concept work to demonstrate a Morello aware Distro framework
 
-            Further information on ongoing work in the Morello Kernel and the use of libshim in C libraries is available below.
+            Further information on ongoing work in the Morello Kernel is available below.
 
             ## CheriBSD
 
-            A mature [CheriBSD](https://www.cheribsd.org) environment for Morello is implemented and hosted separately by the University of Cambridge Computer Laboratory. This provides a memory-safe kernel and userspace, as well as example ports of application frameworks, demonstrating more complete integration of CHERI (and Morello) support into an OS design.
+            A mature [CheriBSD](https://www.cheribsd.org/) environment for Morello is implemented and hosted separately by the University of Cambridge Computer Laboratory. This provides a memory-safe kernel and userspace, as well as many example ports of application frameworks, demonstrating more complete integration of CHERI (and Morello) support into an OS design.
 
       - format: text
         style: bg-white p-4 my-3
@@ -126,20 +124,20 @@ flow:
             ## Component support & tooling
 
             ### Firmware
-            Platform ports of standard open source firmware components: SCP firmware, Trusted Firmware TF-A, UEFI EDK II are available for the Morello platform. These are AArch64 platform ports, with some additional low level hardware initialization to enable support of capabilities in higher level software.
+            Platform ports of standard open source firmware components: SCP firmware, Trusted Firmware TF-A, UEFI EDK II are available for the Morello platform. These are standard 64-bit platform ports, with some additional low level hardware initialization to enable support of capabilities in higher level software.
 
             ### Morello Linux kernel (under development)
 
-            Arm’s work on the Linux Kernel is focused on developing a new kernel-user ABI to support pure capability userspace software development. The aim is to replace all pointers at the kernel-user interface with capabilities, instead of 64-bit integers. This work is linked to development of associated C libraries (Bionic, Musl, GlibC) and developed against a PCuABI (pure capability kernel-user ABI) specification. Enabling Android and Linux environments capable of supporting a mix of pure capability and “COMPAT” standard 64-bit userspace components. (32-bit applications will not be supported)
+            Arm’s work on the Linux Kernel is focused on developing a new kernel-user ABI to support pure capability userspace software development. The aim is to replace all pointers at the kernel-user interface with capabilities, instead of 64-bit integers. This work is linked to development of associated C libraries (Bionic, Musl, GlibC) and developed against a PCuABI (pure capability kernel-user ABI) [specification](https://git.morello-project.org/morello/kernel/linux/-/wikis/home). Ultimately enabling Android and Linux environments capable of supporting a mix of pure capability and “COMPAT” standard 64-bit userspace components. (32-bit applications will not be supported)
 
-            Initial Linux Kernel implementations (releases throughout 2021) rely on a lightly modified ACK (Android Common Kernel), supported by a temporary libshim translation layer in C libraries.
+            Android releases will continue to rely on a lightly modified Kernel, supported by a temporary libshim translation layer in C libraries, until PCuABI support matures.
 
-            Throughout 2022 PCuABI support will be introduced in stages:
+            Throughout 2022/23 PCuABI support will be introduced in stages:
 
             #### Stage1: Functional support
 
             Provide native support for user-space applications built against the purecap ABI
-            * A transitional PCuABI will support an initially limited set of syscalls, expanded over time. (Both transitional and draft full ABI specifications will be published ahead of hardware platform availability.)
+            * A transitional PCuABI will support an initially limited set of syscalls, expanded over time. 
             * Allows incremental reduction of functionality in the corresponding C library libshim (currently used to "bridge" syscalls to the standard Kernel ABI)
 
             #### Stage2: Memory safety & security
@@ -166,7 +164,7 @@ flow:
 
             #### Linux and Android C libraries
 
-            To enable functional development & porting efforts in userspace ahead of full Kernel ABI support, C libraries have been initially implemented using the concept of a [libshim](https://git.morello-project.org/morello/android/platform/external/libshim/) translation layer. This does not provide a secure implementation, but allows support for a full set of system calls ahead of a mature PCuABI and related Kernel and C library implementations. Functionality handled in libshim will reduce over time as the Kernel and C library implementations mature.
+            To enable functional development & porting efforts in userspace ahead of full Kernel ABI support, some C libraries have been initially implemented using the concept of a [libshim](https://git.morello-project.org/morello/android/platform/external/libshim/) translation layer. This does not provide a secure implementation, but allows support for a full set of system calls ahead of a mature PCuABI and related Kernel and C library implementations. Functionality handled in libshim will reduce over time as the Kernel and C library implementations mature.
 
             * Bionic: Supports Android
             * musl libc: Lightweight C library intended to support initial "embedded" Linux environments
@@ -175,7 +173,7 @@ flow:
 
             Development of a GCC-based open-source toolchain and associated GlibC is ongoing.
 
-            An initial proof of concept release is expected mid 2022, with expanded functionality (dynamic linking, C++, etc) emerging throughout the year.
+            An initial proof of concept release is expected in 2022, with expanded functionality (dynamic linking, C++, etc) emerging in stages after first release.
 
             ### Graphics Enablement (under development)
 
@@ -183,5 +181,19 @@ flow:
 
             The display processor relies on an existing upstream Kernel driver. GPU support is based on the Panfrost open-source driver framework for Mali Bifrost GPU architectures, enabling public ecosystem development
 
-            Initial UI support in development environments will be based on software rendering. The aim is to validate an initial Morello platform port of a 64-bit Panfrost GPU driver in a Linux/Mesa graphics framework in the first half of 2022. This provides a foundation for Android graphics development and also support longer term investigation into the application of the security architecture to graphics stacks.
+            Initial UI support in development environments will be based on software rendering. Work is ongoing to validate a Morello platform port of a 64-bit Panfrost GPU driver in a Linux/Mesa graphics framework. This provides a foundation for graphics development and supports longer term investigation into the application of the security architecture to graphics stacks.
+
+      - format: text
+        style: bg-white p-4 my-3
+        text_content:
+          text: |-
+            ## Support and Contributions
+            The Morello Gitlab and associated issues trackers are intended to enable Open Source Software development - supporting engineering contributions and targeted defects and patches relating to specific component projects. We welcome engineering collaboration.
+
+            Wider support queries and questions should be raised via Arm's [Morello forum](https://community.arm.com/support-forums/f/morello-forum)
+            
+            For questions specific to the CheriBSD environment visit [https://www.cheribsd.org/](https://www.cheribsd.org/)
+
+
+
 ---
