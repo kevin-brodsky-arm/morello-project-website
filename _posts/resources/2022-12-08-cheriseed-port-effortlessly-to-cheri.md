@@ -421,7 +421,7 @@ Program received signal SIGSEGV, Segmentation fault.
 
 Current CPU architectures require strong software support for memory and address-space management, increasing the overhead and complexity to make systems more secure. Preventing, or even just mitigating, exploitation of software bugs in the systems results in inefficient and increasingly expensive software support.
 
-CHERI-based architecture introduces hardware-supported security features using explicit capability model with bounded memory access and additional properties to limit unauthorized memory exploitations. All memory within an address space in such an architecture can be accessed via one of two kinds of capabilities. All memory within an address space in such an architecture can be accessed via one of two kinds of capabilities, with one of the types used in load/store instructions to access data or other capabilities, and the other one - for transition between protection domains via invoking call/return instructions[^ref1] [^ref2]. To find out more about memory protection, check this [post] [morello-page].
+CHERI-based architecture introduces hardware-supported security features using explicit capability model with bounded memory access and additional properties to limit unauthorized memory exploitations. All memory within an address space in such an architecture can be accessed via one of two kinds of capabilities, with one of the types used in load/store instructions to access data or other capabilities, and the other one - for transition between protection domains via invoking call/return instructions[^ref1] [^ref2]. To find out more about memory protection, check this [post] [morello-page].
 
 # CHERIseed – Introduction
 
