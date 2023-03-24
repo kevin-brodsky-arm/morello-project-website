@@ -102,6 +102,25 @@
       }
     }
   }
+
+  .text-justify {
+    text-align: justify;
+  }
+
+  #cheri-feature-matrix + table {
+    width: 100%;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    margin: 1rem 0 0 0;
+
+    thead, tr:nth-child(4), tr:nth-child(8), tr:nth-child(16), tr:nth-child(19) {
+      border-bottom: 1px solid black;
+    }
+
+    th, td {
+      padding: 1rem;
+    }
+  }
 }
 
 #wrapper {
