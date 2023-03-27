@@ -7,6 +7,8 @@ brand:
   path: /assets/images/content/ARM1692_Morello_Wordmark_logoST4_White_V1.svg
   alt: Linaro logo
 pages:
+  - title: CHERI OS-feature matrix
+    url: /cheri-feature-matrix/
   - title: Resources
     url: /resources/
   - title: Contact
