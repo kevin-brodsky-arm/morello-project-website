@@ -133,20 +133,21 @@ flow:
             | Kernel temporal safety | - | - |
             | KGDB support for memory-safe kernels | Yes | -[^1] |
             | KGDB support for memory-unsafe kernels | Yes | - (as above) |
-            | Userspace spatial safety<br />(w/memory-unsafe kernel) | Yes | Yes
+            | Userspace spatial safety<br />(w/memory-unsafe kernel) | Yes | Yes |
             | Userspace spatial safety<br />(w/memory-safe kernel) | Yes | - |
-            | Userspace temporal safety | Experimental<br />(branch - expected 23.06 release) | - |
+            | Userspace temporal safety | Experimental[^2]<br />([caprevoke](https://github.com/CTSRD-CHERI/cheribsd/tree/caprevoke) - partially in [22.12](https://github.com/CTSRD-CHERI/cheripedia/wiki/HOWTO:-Use-Cornucopia-with-the-22.12-CheriBSD-Release)) | - |
             | Debugger for memory-safe userspace | Yes | Yes |
             | OS tracing for memory-unsafe userspace<br />(ftrace, DTrace, eBPF, ...) | Under development | Yes |
             | OS tracing for memory-safe userspace<br />(ftrace, DTrace, eBPF, ...) | - | - |
-            | CHERI-enabled Type-2 hypervisor<br />(kvm, bhyve, ...) | Experimental<br />(branch - expected 23.06 release) | Under development |
+            | CHERI-enabled Type-2 hypervisor<br />(kvm, bhyve, ...) | Experimental[^2]<br />([morello-bhyve](https://github.com/CTSRD-CHERI/cheribsd/tree/morello-bhyve)) | Under development |
             | Userspace memory-safety protection<br />against kernel confused deputies | Yes | Under development |
-            | Kernel module compartmentalisation | Experimental<br />(branch) | - |
-            | Userspace library compartmentalisation | Experimental<br />(shipping) | - |
-            | Userspace co-process compartmentalisation | Experimental<br />(branch) | - |
+            | Kernel module compartmentalisation | Experimental<br />([kernel-c18n](https://github.com/CTSRD-CHERI/cheribsd/tree/kernel-c18n)) | - |
+            | Userspace library compartmentalisation | Experimental<br />(released in [22.12](https://man.cheribsd.org/cgi-bin/man.cgi/c18n)) | - |
+            | Userspace co-process compartmentalisation | Experimental<br />([cocalls](https://github.com/CTSRD-CHERI/cheripedia/wiki/Colocation-Tutorial)) | - |
             | Legacy package manager and<br />prebuilt 64-bit packages | Yes<br />(full set - roughly 24,000) | Yes |
             | Memory-safe package manager and<br />prebuilt packages | Yes<br />(limited set - roughly 9,000) | - |
             | Memory-safe desktop stack | Yes | - |
 
             [^1]: While KGDB is not yet supported, debugging Morello Linux using Arm DS Morello Edition with a DStream probe is known to work.
+            [^2]: The next CheriBSD 23.06 release will include some of the experimental features.
 ---
