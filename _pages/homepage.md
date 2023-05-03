@@ -74,7 +74,7 @@ flow:
 
             ![](/assets/images/content/Morello_Software_Stacks_Diagram_ST2_V2.png){:.img-fluid}
 
-            These stacks and the supporting tooling are intended to provide a foundation for ecosystem research, enabling collaboration on existing work packages and new work on alternate RTOS/OS environments, tools and workloads. Functionality will evolve in stages throughout the lifetime of the Morello Program.
+            These stacks and the supporting tooling are intended to provide a foundation for ecosystem research, enabling collaboration on existing work packages and new work on alternate RTOS/OS environments, tools and workloads. Functionality will evolve in stages throughout the lifetime of the Morello Program. The [CHERI OS-feature matrix](/cheri-feature-matrix/) includes more information on features implemented by CheriBSD and Morello Linux operating systems.
 
             Integrated stack releases (manifests, build scripts, documentation) and component forks associated with this page are available via `git.morello-project.org`. Please start with the top level code repository [Documentation](https://git.morello-project.org/morello/docs).
                         
@@ -115,7 +115,9 @@ flow:
 
             ## CheriBSD
 
-            A mature [CheriBSD](https://www.cheribsd.org/) environment for Morello is implemented and hosted separately by the University of Cambridge Computer Laboratory. This provides a memory-safe kernel and userspace, as well as many example ports of application frameworks, demonstrating more complete integration of CHERI (and Morello) support into an OS design.
+            A mature [CheriBSD](https://www.cheribsd.org/) environment for Morello is implemented and hosted separately by the University of Cambridge and SRI International. CheriBSD provides a memory-safe kernel and userspace, as well as many example ports of application frameworks, demonstrating more complete integration of CHERI (and Morello) support into an OS design.
+
+            See the [CHERI OS-feature matrix](/cheri-feature-matrix/) to read more on currently implemented and planned features.
 
       - format: text
         style: bg-white p-4 my-3
