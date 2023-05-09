@@ -7,6 +7,10 @@ brand:
   path: /assets/images/content/ARM1692_Morello_Wordmark_logoST4_White_V1.svg
   alt: Linaro logo
 pages:
+  - title: Get Started
+    url: https://linux.morello-project.org/
+  - title: SDK
+    url: https://sdk.morello-project.org/
   - title: CHERI OS-feature matrix
     url: /cheri-feature-matrix/
   - title: Resources
