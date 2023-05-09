@@ -19,6 +19,8 @@ cd <git repository directory>
 ./build-site.sh
 ```
 
+**Note:** Make sure that the **website** directory has **rwx** for the other users otherwise the command above will return an error.
+
 To build the site and then serve it so that you can check your contribution appears:
 
 ```bash
