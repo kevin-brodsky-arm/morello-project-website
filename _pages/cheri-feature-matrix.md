@@ -93,21 +93,13 @@ flow:
             community driven work on a Yocto framework for evolving userspace
             ports is also underway. The current status of the project is focused
             on building the environment and is actively seeking contributions to
-            help enable and accelerate the work. Today a basic proof of concept
-            release is available, showing a limited demonstration of the kernel
-            supported by a filesystem with a busybox port. In the second half of
-            2023 we aim to provide a first release of a Morello Linux
-            Development Kit that will include a simplified container based build
-            process, some additional CI flows and a hybrid Debian Linux test
-            environment.  This release will include some roadmap guidance on the
-            status of the functional implementation and security hardening,
-            allowing researchers to understand what is possible when. Along with
-            details on timelines for the introduction of later features such as
-            GNU/glibc support. More information will be published on the project
-            website
-            [morello-project.org](https://www.morello-project.org/)
-            nearer release.
+            help enable and accelerate the work. Future integration releases
+            aim to expand the scope of the existing implementation and 
+            introduce GNU/glibc tooling. For more details on status 
+            visit the [morello-project.org](https://www.morello-project.org/)
+            homepage.                     
             {: .text-justify}
+            
       - format: text
         style: bg-white p-4 my-3
         text_content:

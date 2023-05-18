@@ -5,7 +5,7 @@ description: >
 permalink: /
 layout: flow
 jumbotron:
-  header_title: Welcome to the landing page for Morello Open Source Software
+  header_title: Welcome to the landing page for Morello Linux
   class: flex-column expandable_jumbotron background-image morello
   include: morello_homepage_header_section.html
   image: /assets/images/content/iStock-1147065676.jpg
@@ -24,17 +24,16 @@ jumbotron:
 dev_section:
   first_column:
     icon: /assets/images/content/icon-2.png
-    title: The Morello code repositories
+    title: Code repositories
     url: https://git.morello-project.org/morello
     text: |-
-      Please refer to the top level [Documentation](https://git.morello-project.org/morello/docs) repository to get started.
+      Code repositories for Morello Linux environments
   second_column:
     url: https://www.arm.com/why-arm/architecture/cpu/morello
     icon: /assets/images/content/icon-1.png
-    title: Arm's Morello pages
+    title: Arm Morello pages
     text: |-
-      Arm's [web pages](https://www.arm.com/why-arm/architecture/cpu/morello) provide curated resources for the Morello Program. Including Architecture specifications, platform model, 
-      technical reference manual, Morello forum and more.
+      Architecture specifications, hardware reference manuals, community forum, etc.
 flow:
   - row: container_row
     style: bg-primary
@@ -48,6 +47,15 @@ flow:
         style: bg-white p-4 my-3
         text_content:
           text: |-
+            ## Introduction
+            This website is the home page for research on Capability aware Morello Linux environments. To learn more please refer to our [Morello Linux documentation](https://linux.morello-project.org/docs/).
+
+            The Morello platform is supported by a number of evolving RTOS/OS environments at different stages of maturity. [CheriBSD](https://www.cheribsd.org/) is implemented and hosted separately by the University of Cambridge and SRI International and includes a memory-safe kernel, userspace and various example frameworks. The [CHERI OS-feature matrix]( https://www.morello-project.org/cheri-feature-matrix/) includes more information on features implemented by Morello Linux and CheriBSD operating systems.
+
+      - format: text
+        style: bg-white p-4 my-3
+        text_content:
+          text: |-
             ## Development Platforms
             ### Morello Hardware Development Platform
 
@@ -56,7 +64,7 @@ flow:
             ![](/assets/images/content/DSCF0211-Edit.jpg){: width="400" }
 
             To get started please refer to our [Morello User Guide](https://linux.morello-project.org/docs/user-guide/).
-
+            
             ### Morello Platform Model
 
             The Morello Platform Model is an open access FVP (Fixed Virtual Platform) implementation aligned with the development board. It is available to download from Arm’s [Ecosystem FVP Developer page](https://developer.arm.com/tools-and-software/open-source-software/arm-platforms-software/arm-ecosystem-fvps).
