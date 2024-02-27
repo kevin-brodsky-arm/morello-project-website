@@ -59,27 +59,41 @@ flow:
           text: |-
             ## Operating Systems
 
-            ### CheriBSD (as of version 22.12)
+            ### CheriBSD (as of version 23.11)
 
             CheriBSD is a research operating system adapted from the open-source
             FreeBSD OS, intended to explore and illustrate how CHERI
             architectural features can be used by a complete experimental
-            software stack. Developed since around 2012, CheriBSD is compiled
-            using the CHERI Clang/LLVM compiler suite and includes a spatially
-            memory-safe UNIX kernel and spatially memory-safe userspace
-            including over 8,000 memory-safe third-party packages available to
-            install. CheriBSD is installed on a Morello board using a USB stick,
-            and supports an easy-to-configure memory-safe desktop environment.
-            Various research features remain in progress including a shipped
-            library-compartmentalisation model, and experimental support for
-            heap temporal memory safety and co-process compartmentalisation
-            available from development branches. CheriBSD can be cross-built
-            from Ubuntu, macOS, and FreeBSD, or self-hosted on CheriBSD running
-            on a Morello board. Open-source contributions are welcome and very
-            much appreciated, including new third-party application adaptations
-            to CHERI. The next planned release is 23.06 in mid-2023, which will
-            include temporal safety and a CHERI-enabled hypervisor. The project
-            website is [CheriBSD.org](https://www.cheribsd.org/).
+            software stack.
+            Developed since around 2012, CheriBSD is compiled using the CHERI
+            Clang/LLVM compiler suite.
+            CheriBSD supports multiple ABIs (the pure-capability ABI, the
+            benchmark ABI and the hybrid ABI) that allow to evaluate
+            security and performance properties of CHERI software stacks as well
+            as to use third-party software that is not fully adapted to CHERI
+            yet.
+            CheriBSD includes a spatially memory-safe UNIX kernel, spatially
+            memory-safe userspace including over 10,000 memory-safe third-party
+            packages available to install and a heap temporal safety mechanism
+            for userspace that is enabled by default.
+            There are several compartmentalisation models actively developed for
+            CheriBSD.
+            The linker-based compartmentalisation model for userspace is
+            included in the current release while more experimental co-process
+            and kernel linker-based models are available in development
+            branches.
+            Other features include a memory-safe desktop environment,
+            a CHERI-enabled hypervisor (bhyve) and alpha support for ZFS.
+            CheriBSD is installed on a Morello board using a USB stick.
+            The
+            [Getting Started with CheriBSD](https://ctsrd-cheri.github.io/cheribsd-getting-started/)
+            guide describes the installation steps and CheriBSD features in more
+            details.
+            CheriBSD can be cross-built from Ubuntu, macOS, and FreeBSD, or
+            self-hosted on CheriBSD running on a Morello board.
+            Open-source contributions are welcome and very much appreciated,
+            including new third-party application adaptations to CHERI.
+            The project website is [CheriBSD.org](https://www.cheribsd.org/).
             {: .text-justify}
 
             ### Morello Linux
@@ -127,19 +141,19 @@ flow:
             | KGDB support for memory-unsafe kernels | Yes | - (as above) |
             | Userspace spatial safety<br />(w/memory-unsafe kernel) | Yes | Yes |
             | Userspace spatial safety<br />(w/memory-safe kernel) | Yes | - |
-            | Userspace temporal safety | Experimental[^2]<br />([caprevoke](https://github.com/CTSRD-CHERI/cheribsd/tree/caprevoke) - partially in [22.12](https://github.com/CTSRD-CHERI/cheripedia/wiki/HOWTO:-Use-Cornucopia-with-the-22.12-CheriBSD-Release)) | - |
+            | Userspace temporal safety | [Yes](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/temporal.html)<br />(released in 23.11) | - |
             | Debugger for memory-safe userspace | Yes | Yes |
             | OS tracing for memory-unsafe userspace<br />(ftrace, DTrace, eBPF, ...) | Under development | Yes |
             | OS tracing for memory-safe userspace<br />(ftrace, DTrace, eBPF, ...) | - | - |
-            | CHERI-enabled Type-2 hypervisor<br />(kvm, bhyve, ...) | Experimental[^2]<br />([morello-bhyve](https://github.com/CTSRD-CHERI/cheribsd/tree/morello-bhyve)) | Under development |
+            | CHERI-enabled Type-2 hypervisor<br />(kvm, bhyve, ...) | [Experimental](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/bhyve.html) | Under development |
             | Userspace memory-safety protection<br />against kernel confused deputies | Yes | Under development |
-            | Kernel module compartmentalisation | Experimental<br />([kernel-c18n](https://github.com/CTSRD-CHERI/cheribsd/tree/kernel-c18n)) | - |
-            | Userspace library compartmentalisation | Experimental<br />(released in [22.12](https://man.cheribsd.org/cgi-bin/man.cgi/c18n)) | - |
+            | Userspace library compartmentalisation | [Experimental](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/c18n.html)<br />(since 22.12) | - |
             | Userspace co-process compartmentalisation | Experimental<br />([cocalls](https://github.com/CTSRD-CHERI/cheripedia/wiki/Colocation-Tutorial)) | - |
-            | Legacy package manager and<br />prebuilt 64-bit packages | Yes<br />(full set - roughly 24,000) | Yes |
-            | Memory-safe package manager and<br />prebuilt packages | Yes<br />(limited set - roughly 9,000) | - |
-            | Memory-safe desktop stack | Yes | - |
+            | Kernel module compartmentalisation | Experimental<br />([kernel-c18n](https://github.com/CTSRD-CHERI/cheribsd/tree/kernel-c18n)) | - |
+            | Legacy package manager and<br />prebuilt 64-bit packages | [Yes](https://ctsrd-cheri.github.io/cheribsd-getting-started/packages/)<br />(full set - roughly 25,000) | Yes |
+            | Memory-safe package manager and<br />prebuilt packages | [Yes](https://ctsrd-cheri.github.io/cheribsd-getting-started/packages/)<br />(limited set - roughly 10,000) | - |
+            | Benchmark package manager and<br />prebuilt packages | [Yes](https://ctsrd-cheri.github.io/cheribsd-getting-started/packages/)<br />(limited set - roughly 10,000) | - |
+            | Memory-safe desktop stack | [Yes](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/desktop.html) | - |
 
             [^1]: While KGDB is not yet supported, debugging Morello Linux using Arm DS Morello Edition with a DStream probe is known to work.
-            [^2]: The next CheriBSD 23.06 release will include some of the experimental features.
 ---
