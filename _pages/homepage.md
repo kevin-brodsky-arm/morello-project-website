@@ -14,7 +14,7 @@ jumbotron:
     image_alt: test image alt
     text: |-
       Morello is a research program led by Arm in association with partners and funded by the UKRI as
-      part of the UK government [Digital Security by Design (DSbD) programme](https://www.ukri.org/innovation/industrial-strategy-challenge-fund/digital-security-by-design/) . It defines a new prototype security architecture based on CHERI (Capability Hardware Enhanced RISC Instructions).
+      part of the UK government [Digital Security by Design (DSbD) programme](https://www.dsbd.tech/). It defines a new prototype security architecture based on CHERI (Capability Hardware Enhanced RISC Instructions).
   second_section:
     image: /assets/images/content/DSCF0218.jpg
     image_alt: second test image alt
